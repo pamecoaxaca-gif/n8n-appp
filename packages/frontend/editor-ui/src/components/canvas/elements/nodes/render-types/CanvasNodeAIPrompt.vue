@@ -89,6 +89,8 @@ async function onSuggestionClick(suggestion: WorkflowSuggestion) {
  * Opens the node creator for adding trigger nodes manually
  */
 function onAddNodeClick() {
+	if (builderStore.streaming) return;
+
 	nodeCreatorStore.openNodeCreatorForTriggerNodes(
 		NODE_CREATOR_OPEN_SOURCES.TRIGGER_PLACEHOLDER_BUTTON,
 	);
@@ -142,6 +144,7 @@ function onAddNodeClick() {
 				v-for="suggestion in suggestions"
 				:key="suggestion.id"
 				:class="$style.suggestionPill"
+				:disabled="builderStore.streaming"
 				type="button"
 				@click="onSuggestionClick(suggestion)"
 			>
@@ -156,7 +159,12 @@ function onAddNodeClick() {
 
 		<!-- Manual node creation section -->
 		<section :class="$style.startManually" @click.stop="onAddNodeClick">
-			<button :class="$style.addButton" type="button" aria-label="Add node manually">
+			<button
+				:class="$style.addButton"
+				:disabled="builderStore.streaming"
+				type="button"
+				aria-label="Add node manually"
+			>
 				<n8n-icon icon="plus" :size="40" />
 			</button>
 			<div :class="$style.startManuallyLabel">
@@ -283,7 +291,7 @@ function onAddNodeClick() {
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-regular);
 
-	&:hover {
+	&:hover:not(:disabled) {
 		color: var(--color-primary);
 		border-color: var(--color-primary);
 		background: var(--color-background-xlight);
