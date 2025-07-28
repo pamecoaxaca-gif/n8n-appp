@@ -1,0 +1,42 @@
+app = "n8n-appp"
+
+[build]
+  dockerfile = "Dockerfile"
+  args = {
+    NODE_VERSION = "22",
+    N8N_VERSION = "snapshot",
+    LAUNCHER_VERSION = "1.1.3"
+  }
+
+[env]
+  NODE_ENV = "production"
+  N8N_RELEASE_TYPE = "dev"
+
+[mounts]
+  source="n8n_data_1"
+  destination="/home/node/.n8n/data1"
+
+[mounts]
+  source="n8n_data_2"
+  destination="/home/node/.n8n/data2"
+
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  internal_port = 5678
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "1m"
