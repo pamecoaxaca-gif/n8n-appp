@@ -11,7 +11,7 @@ N8N_HOST = "0.0.0.0"
 WEBHOOK_URL = "https://n8n-app.fly.dev" # 🌐 Actualiza según tu dominio
 N8N_BASIC_AUTH_ACTIVE = "true"
 N8N_BASIC_AUTH_USER = "admin"
-N8N_BASIC_AUTH_PASSWORD = "supersecreto" # 🔒 Cámbialo por una clave segura
+N8N_BASIC_AUTH_PASSWORD = "n8n8123" # 🔒 Cámbialo por una clave segura
 
 [[services]]
 internal_port = 5678
