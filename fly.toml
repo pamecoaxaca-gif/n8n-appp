@@ -1,4 +1,4 @@
-app = "nombre-de-tu-aplicacion"
+app = "n8n-appp"
 
 [build]
   dockerfile = "Dockerfile"
