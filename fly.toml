@@ -1,43 +1,47 @@
-app = "n8n-appp"
+app = "n8n-appp" # 🔧 Reemplaza con el nombre de tu app en Fly.io
+
+primary_region = "iad" # 🌎 Puedes cambiar esto a tu región preferida
 
 [build]
-  dockerfile = "Dockerfile"
-
-[build.args]
-  NODE_VERSION = "22"
-  N8N_VERSION = "snapshot"
-  LAUNCHER_VERSION = "1.1.3"
+image = "tu-usuario/n8n:latest" # 🐳 Reemplaza con la URL de tu imagen en Docker Hub o el nombre de tu imagen construida localmente
 
 [env]
-  NODE_ENV = "production"
-  N8N_RELEASE_TYPE = "dev"
-
-[[mounts]]
-  source = "n8n_data_1"
-  destination = "/home/node/.n8n/data1"
-
-[[mounts]]
-  source = "n8n_data_2"
-  destination = "/home/node/.n8n/data2"
-
-[experimental]
-  auto_rollback = true
+N8N_PORT = "5678"
+N8N_HOST = "0.0.0.0"
+WEBHOOK_URL = "https://n8n-app.fly.dev" # 🌐 Actualiza según tu dominio
+N8N_BASIC_AUTH_ACTIVE = "true"
+N8N_BASIC_AUTH_USER = "admin"
+N8N_BASIC_AUTH_PASSWORD = "supersecreto" # 🔒 Cámbialo por una clave segura
 
 [[services]]
-  internal_port = 5678
-  protocol = "tcp"
+internal_port = 5678
+protocol = "tcp"
 
   [[services.ports]]
-    port = 80
-    handlers = ["http"]
-    force_https = true
+  handlers = ["http"]
+  port = 80
 
   [[services.ports]]
-    port = 443
-    handlers = ["tls", "http"]
+  handlers = ["tls", "http"]
+  port = 443
 
   [[services.tcp_checks]]
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "1m"
+  grace_period = "30s"
+  interval = "15s"
+  timeout = "5s"
+  restart_limit = 5
+
+[[services]]
+internal_port = 5678
+protocol = "http"
+
+  [[services.http_checks]]
+  interval = 10000
+  timeout = 2000
+  method = "GET"
+  path = "/healthz"
+  protocol = "http"
+  tls_skip_verify = true
+  restart_limit = 5
+
 
