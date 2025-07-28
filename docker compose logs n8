@@ -1,0 +1,27 @@
+ 
+docker compose logs n8n:
+n8n  | 2025-06-19T16:32:10.879Z | info | User settings loaded from: /home/node/.n8n/config {"file":"instance-settings.js","function":"loadOrCreate"}
+n8n  | 2025-06-19T16:32:12.633Z | error | Last session crashed {"file":"crash-journal.js","function":"init"}
+n8n  | 2025-06-19T16:32:22.640Z | info | Initializing n8n process {"file":"start.js","function":"init"}
+n8n  | 2025-06-19T16:32:22.777Z | debug | Lazy-loading nodes and credentials from n8n-nodes-base {"nodes":481,"credentials":384,"file":"lazy-package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:32:22.788Z | debug | Lazy-loading nodes and credentials from @n8n/n8n-nodes-langchain {"nodes":93,"credentials":21,"file":"lazy-package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:32:22.793Z | debug | Can't enable lazy-loading {"file":"lazy-package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:32:23.070Z | debug | Loaded all credentials and nodes from n8n-nodes-searxng {"credentials":1,"nodes":1,"file":"package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:34:28.881Z | info | Received SIGTERM. Shutting down... {"file":"base-command.js"}
+n8n  | 2025-06-19T16:34:28.882Z | debug | Shutting down component "License.shutdown()" {"file":"shutdown.service.js","function":"shutdownComponent"}
+n8n  | 2025-06-19T16:34:28.884Z | debug | Shutting down component "Push.onShutdown()" {"file":"shutdown.service.js","function":"shutdownComponent"}
+n8n  | 2025-06-19T16:34:28.886Z | debug | Shutting down component "ActiveWorkflowManager.removeAllTriggerAndPollerBasedWorkflows()" {"file":"shutdown.service.js","function":"shutdownComponent"}
+n8n  | 2025-06-19T16:34:28.888Z | debug | Shutting down component "AbstractServer.onShutdown()" {"file":"shutdown.service.js","function":"shutdownComponent"}
+n8n  | 2025-06-19T16:34:28.889Z | debug | Shutting down component "ExecutionsPruningService.shutdown()" {"file":"shutdown.service.js","function":"shutdownComponent"}
+n8n  | 2025-06-19T16:34:28.890Z | debug | Shutting down component "Telemetry.stopTracking()" {"file":"shutdown.service.js","function":"shutdownComponent"}
+n8n  | 2025-06-19T16:34:28.893Z | info |
+n8n  | Stopping n8n... {"file":"start.js","function":"stopProcess"}
+n8n  | 2025-06-19T16:34:28.893Z | error | There was an error shutting down n8n. {"file":"error-reporter.js","function":"defaultReport"}
+n8n  | 2025-06-19T16:34:28.893Z | error | Cannot read properties of undefined (reading 'removeAllQueuedWorkflowActivations') {"file":"error-reporter.js","function":"defaultReport"}
+n8n  | 2025-06-19T16:34:32.345Z | info | User settings loaded from: /home/node/.n8n/config {"file":"instance-settings.js","function":"loadOrCreate"}
+n8n  | 2025-06-19T16:34:34.086Z | error | Last session crashed {"file":"crash-journal.js","function":"init"}
+n8n  | 2025-06-19T16:34:44.092Z | info | Initializing n8n process {"file":"start.js","function":"init"}
+n8n  | 2025-06-19T16:34:44.256Z | debug | Lazy-loading nodes and credentials from n8n-nodes-base {"nodes":481,"credentials":384,"file":"lazy-package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:34:44.264Z | debug | Lazy-loading nodes and credentials from @n8n/n8n-nodes-langchain {"nodes":93,"credentials":21,"file":"lazy-package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:34:44.268Z | debug | Can't enable lazy-loading {"file":"lazy-package-directory-loader.js","function":"loadAll"}
+n8n  | 2025-06-19T16:34:44.570Z | debug | Loaded all credentials and nodes from n8n-nodes-searxng {"credentials":1,"nodes":1,"file":"package-directory-loader.js","function":"loadAll"}
